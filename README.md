@@ -1,7 +1,4 @@
-## GREEK STEMMER
-
-CONTRIBUTORS
-============
+## CONTRIBUTORS
 
 Konstantinos Pechlivanis (kpechlivanis21@gmail.com) in the context of
 his MSc thesis at Technical University of Crete and NCSR "Demokritos",
@@ -14,8 +11,7 @@ University of Athens, on "Metaphor Detection in Greek"
 
 
 
-DESCRIPTION
-===========
+## DESCRIPTION
 
 The system takes as input, a word (ignore case) and the Part Of Speech tagging(POS) of word and removes its inflexional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language [1]. An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
 
