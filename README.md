@@ -1,6 +1,25 @@
 ## GREEK STEMMER
 
-In this thesis work, a stemming system for the Greek language is presented. This Greek Stemmer is developed during the master thesis with title "Corpus Based Methods for Learning Models of Metaphor in Modern Greek" and the phd thesis "Metaphor Detection in greek corpus" in the Institute of Informatics and Telecommunications at NCSR Demokritos. The system takes as input, a word (ignore case) and the Part Of Speech tagging(POS) of word and removes its inflexional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language "Γραμματική της Ελληνικής Γλώσσας" David Holton, Peter Mackridge, Ειρήνη Φιλιππάκη-Warburton (2002). An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
+CONTRIBUTORS
+============
+
+Konstantinos Pechlivanis (kpechlivanis21@gmail.com) in the context of
+his MSc thesis at Technical University of Crete and NCSR "Demokritos",
+on "Corpus Based Methods for Learning Models of Metaphor in Modern
+Greek"
+
+Eirini Florou (eirini.florou@gmail.com) in the context of her PhD at
+University of Athens, on "Metaphor Detection in Greek"
+
+
+
+
+DESCRIPTION
+===========
+
+The system takes as input, a word (ignore case) and the Part Of Speech tagging(POS) of word and removes its inflexional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language [1]. An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
+
+[1] David Holton, Peter Mackridge, Ειρήνη Φιλιππάκη-Warburton (2002), "Γραμματική της Ελληνικής Γλώσσας".
 
 POS: The system uses the POS tagger of [Ellogon](https://www.ellogon.org/) with the following [categories](https://www.ellogon.org/index.php/download/all-categories/category/7-ellogon-documentation-manuals#) for the rules:
 
