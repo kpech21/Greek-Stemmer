@@ -15,7 +15,7 @@ University of Athens, on "Metaphor Detection in Greek"
 
 The system takes as input, a word (ignore case) and the Part Of Speech tagging(POS) of word and removes its inflexional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language [1]. An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
 
-[1] David Holton, Peter Mackridge, Ειρήνη Φιλιππάκη-Warburton (2002), "Γραμματική της Ελληνικής Γλώσσας".
+[1] David Holton, Peter Mackridge, Ξ•ΞΉΟΞ®Ξ½Ξ· Ξ¦ΞΉΞ»ΞΉΟ€Ο€Ξ¬ΞΊΞ·-Warburton (2002), "Ξ“ΟΞ±ΞΌΞΌΞ±Ο„ΞΉΞΊΞ® Ο„Ξ·Ο‚ Ξ•Ξ»Ξ»Ξ·Ξ½ΞΉΞΊΞ®Ο‚ Ξ“Ξ»ΟΟƒΟƒΞ±Ο‚".
 
 POS: The system uses the POS tagger of [Ellogon](https://www.ellogon.org/) with the following [categories](https://www.ellogon.org/index.php/download/all-categories/category/7-ellogon-documentation-manuals#) for the rules:
 
@@ -37,17 +37,16 @@ POS: The system uses the POS tagger of [Ellogon](https://www.ellogon.org/) with 
 
 * Preposition: INP
 
-Although there is a variety of stemmers, the unique morphological system of each language doesn't allow the creation of a global rule-based algorithm which would be able to find out the stem of each word. Especially, in some languages with a rich morphological system, like greek, is even more difficult to find the word stem by reducing the suffix from inflected or derived words. At this point, it would be useful to be mentioned that the greek morphological system may appear a wide variety of suffixes, some of them may appear in different parts of speech. For this reason it is necessary to point out the part of speech of the certain word before trying to find out the root of the concrete word. Let's exam some typical examples. For instance, the word "εργαζόμενος" is the participle of the verb "εργάζομαι". Altough, the typical suffix of the present participle is "-όμενος", it may be confused with the basic suffix of adjectives  "-ος". As a result can be erroneously be identified as the root of the word "εργαζόμενος", the stem "εργαζόμεν", while in fact its stem is "εργαζ". Moreover, there are numerals or adverbs which may appear typical verbal suffixes. So, the number "οκτώ" or the adverb "παραπάνω" seem to have the same suffix with the verbal forms of the first, singular person of the present tense of the active voice. For this reason, it is appropriate to know the part of speech of the word in order to find the stem as in the certain case the suffix of the verb is actually "-ω", while the numerals and adverbs are non declinable parts of speech and as a consequence their stem is the word itself.
+Although there is a variety of stemmers, the unique morphological system of each language doesn't allow the creation of a global rule-based algorithm which would be able to find out the stem of each word. Especially, in some languages with a rich morphological system, like greek, is even more difficult to find the word stem by reducing the suffix from inflected or derived words. At this point, it would be useful to be mentioned that the greek morphological system may appear a wide variety of suffixes, some of them may appear in different parts of speech. For this reason it is necessary to point out the part of speech of the certain word before trying to find out the root of the concrete word. Let's exam some typical examples. For instance, the word "ΞµΟΞ³Ξ±Ξ¶ΟΞΌΞµΞ½ΞΏΟ‚" is the participle of the verb "ΞµΟΞ³Ξ¬Ξ¶ΞΏΞΌΞ±ΞΉ". Altough, the typical suffix of the present participle is "-ΟΞΌΞµΞ½ΞΏΟ‚", it may be confused with the basic suffix of adjectives  "-ΞΏΟ‚". As a result can be erroneously be identified as the root of the word "ΞµΟΞ³Ξ±Ξ¶ΟΞΌΞµΞ½ΞΏΟ‚", the stem "ΞµΟΞ³Ξ±Ξ¶ΟΞΌΞµΞ½", while in fact its stem is "ΞµΟΞ³Ξ±Ξ¶". Moreover, there are numerals or adverbs which may appear typical verbal suffixes. So, the number "ΞΏΞΊΟ„Ο" or the adverb "Ο€Ξ±ΟΞ±Ο€Ξ¬Ξ½Ο‰" seem to have the same suffix with the verbal forms of the first, singular person of the present tense of the active voice. For this reason, it is appropriate to know the part of speech of the word in order to find the stem as in the certain case the suffix of the verb is actually "-Ο‰", while the numerals and adverbs are non declinable parts of speech and as a consequence their stem is the word itself.
 
 
 #### Examples
 
 | WORD | CONFUSED WITH THE STEM OF ANOTHER POS | REAL STEM |
 |------|---------------------------------------|-----------|
-| εργαζόμενος (employee) | εργαζόμεν (confused with the stem of the adjectives) | εργαζ |
-| οκτώ (eight) | οκτ (confused with the stem of the verbs) | οκτώ |
-| παραπάνω (more) | παραπάν (confused with the stem of the verbs) | παραπάνω |
-
+| ΞµΟΞ³Ξ±Ξ¶ΟΞΌΞµΞ½ΞΏΟ‚ (employee) | ΞµΟΞ³Ξ±Ξ¶ΟΞΌΞµΞ½ (confused with the stem of the adjectives) | ΞµΟΞ³Ξ±Ξ¶ |
+| ΞΏΞΊΟ„Ο (eight) | ΞΏΞΊΟ„ (confused with the stem of the verbs) | ΞΏΞΊΟ„Ο |
+| Ο€Ξ±ΟΞ±Ο€Ξ¬Ξ½Ο‰ (more) | Ο€Ξ±ΟΞ±Ο€Ξ¬Ξ½ (confused with the stem of the verbs) | Ο€Ξ±ΟΞ±Ο€Ξ¬Ξ½Ο‰ |
 
 
 #### Example usage
