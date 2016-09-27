@@ -14,7 +14,7 @@ def run():
 
     while True:
 
-        word = raw_input('Please give a word: ').strip()
+        word = unicode(raw_input('Please give a word: ').strip(), 'utf-8')
 
         pos = raw_input('Please give the Part-of-Speech of word: ').strip()
         while pos not in total_pos:
@@ -22,7 +22,7 @@ def run():
             pos = raw_input('Please give the Part-of-Speech of word correctly: ').strip()
 
         # Remove accents - Upper case
-        word = unicode(word, 'utf-8').upper()
+        word = word.upper()
         nkfd_form = unicodedata.normalize('NFKD', word)
         word = "".join([c for c in nkfd_form if not unicodedata.combining(c)])
 

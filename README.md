@@ -52,11 +52,5 @@ Although there is a variety of stemmers, the unique morphological system of each
 #### Example usage
 
 ```python
-$ python greek_stemmer.py word POS
+$ python run_stemmer.py
 ```
-
-Arguments:
-
-1. word: the current word
-2. POS: part of speech of word
-

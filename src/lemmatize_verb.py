@@ -46,7 +46,7 @@ def stem(word, pos, vowels):
     :return: string
         -Return the lemmatized word
     """
-    # rule-set 1 --- Specific verbs
+    # rule-set 1 --- Irregular verbs
     if word in [u'ΕΙΜΑΙ', u'ΕΙΣΑΙ', u'ΕΙΝΑΙ', u'ΕΙΜΑΣΤΕ', u'ΕΙΣΤΕ', u'ΕΙΣΑΣΤΕ']:
         return 'ΕΙ'
     elif word in [u'ΗΜΟΥΝ', u'ΗΣΟΥΝ', u'ΗΤΑΝΕ', u'ΗΜΟΥΝΑ', u'ΗΣΟΥΝΑ', u'ΗΜΑΣΤΕ', u'ΗΣΑΣΤΕ', u'ΗΜΑΣΤΑΝ', u'ΗΣΑΣΤΑΝ', u'ΗΤΑΝ']:
@@ -57,61 +57,32 @@ def stem(word, pos, vowels):
 
     # rule-set 2 --- ACTIVE VOICE, Singular --- PASSIVE VOICE, Singular
     if pos in ['VB', 'VBD', 'VBF', 'MD']:
-        for suffix in [u'ΙΟΜΟΥΝΑ', u'ΙΟΣΟΥΝΑ', u'ΟΥΜΟΥΝΑ', u'ΟΥΣΟΥΝΑ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΙΟΜΟΥΝ', u'ΙΟΣΟΥΝ', u'ΙΟΤΑΝΕ', u'ΟΥΣΟΥΝ', u'ΟΥΜΟΥΝ', u'ΟΜΟΥΝΑ', u'ΟΣΟΥΝΑ', u'ΑΡΗΣΕΣ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΩΝΤΑΣ', u'ΟΝΤΑΣ', u'ΟΜΟΥΝ', u'ΟΣΟΥΝ', u'ΟΤΑΝΕ', u'ΟΥΣΑΙ', u'ΟΥΤΑΙ', u'ΟΥΣΕΣ', u'ΑΡΕΙΣ', u'ΙΕΜΑΙ', u'ΙΕΣΑΙ', u'ΙΕΤΑΙ',
-                       u'ΟΥΜΑΙ', u'ΕΙΣΑΙ', u'ΕΙΤΑΙ', u'ΙΟΤΑΝ', u'ΑΡΗΣΕ', u'ΑΡΗΣΑ']:
-            if suffix == u'ΙΟΤΑΝ' and (len(word.decode('utf-8')) > 5):
-                if word.decode('utf-8')[-6] in vowels:
+        suffix = [u'ΙΟΜΟΥΝΑ', u'ΙΟΣΟΥΝΑ', u'ΟΥΜΟΥΝΑ', u'ΟΥΣΟΥΝΑ', u'ΙΟΜΟΥΝ', u'ΙΟΣΟΥΝ', u'ΙΟΤΑΝΕ', u'ΟΥΣΟΥΝ', u'ΟΥΜΟΥΝ', u'ΟΜΟΥΝΑ', u'ΟΣΟΥΝΑ',
+                  u'ΑΡΗΣΕΣ', u'ΩΝΤΑΣ', u'ΟΝΤΑΣ', u'ΟΜΟΥΝ', u'ΟΣΟΥΝ', u'ΟΤΑΝΕ', u'ΟΥΣΑΙ', u'ΟΥΤΑΙ', u'ΟΥΣΕΣ', u'ΑΡΕΙΣ', u'ΙΕΜΑΙ', u'ΙΕΣΑΙ', u'ΙΕΤΑΙ',
+                  u'ΟΥΜΑΙ', u'ΕΙΣΑΙ', u'ΕΙΤΑΙ', u'ΙΟΤΑΝ', u'ΑΡΗΣΕ', u'ΑΡΗΣΑ', u'ΕΣΑΙ', u'ΕΤΑΙ', u'ΗΚΕΣ', u'ΟΜΑΙ', u'ΟΤΑΝ', u'ΟΥΣΑ', u'ΟΥΣΕ', u'ΑΓΕΣ',
+                  u'ΩΜΑΙ', u'ΑΣΑΙ', u'ΑΤΑΙ', u'ΑΡΕΣ', u'ΑΡΕΙ', u'ΜΑΙ', u'ΣΑΙ', u'ΤΑΙ', u'ΜΗΝ', u'ΗΚΑ', u'ΗΚΕ', u'ΕΙΣ', u'ΑΕΙ', u'ΑΓΑ', u'ΑΓΕ', u'ΟΙΣ',
+                  u'ΑΡΩ', u'ΑΡΑ', u'ΑΡΕ', u'ΟΥ', u'ΗΝ', u'ΗΣ', u'ΕΙ', u'ΑΩ', u'ΑΣ', u'ΕΣ', u'ΟΙ', u'ΣΟ', u'ΤΟ', u'Ω', u'Α', u'Ε', u'Η']
+
+        for ii in range(len(suffix)):
+            if suffix[ii] == u'ΙΟΤΑΝ' and len(word) > 5:
+                if word[-6] in vowels:
                     continue
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΕΣΑΙ', u'ΕΤΑΙ', u'ΗΚΕΣ', u'ΟΜΑΙ', u'ΟΤΑΝ', u'ΟΥΣΑ', u'ΟΥΣΕ', u'ΑΓΕΣ', u'ΩΜΑΙ', u'ΑΣΑΙ', u'ΑΤΑΙ', u'ΑΡΕΣ', u'ΑΡΕΙ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΜΑΙ', u'ΣΑΙ', u'ΤΑΙ', u'ΜΗΝ', u'ΗΚΑ', u'ΗΚΕ', u'ΕΙΣ', u'ΑΕΙ', u'ΑΓΑ', u'ΑΓΕ', u'ΟΙΣ', u'ΑΡΩ', u'ΑΡΑ', u'ΑΡΕ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΥ', u'ΗΝ', u'ΗΣ', u'ΕΙ', u'ΑΩ', u'ΑΣ', u'ΕΣ', u'ΟΙ', u'ΣΟ', u'ΤΟ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'Ω', u'Α', u'Ε', u'Η']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
+            if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 1:
+                return word[:len(word) - len(suffix[ii])]
 
     # rule-set 3 --- ACTIVE VOICE, Plural --- PASSIVE VOICE, Plural
     elif pos in ['VBS', 'VBDS', 'VBFS']:
-        for suffix in [u'ΙΟΝΤΟΥΣΑΝ', u'ΙΟΜΑΣΤΑΝ', u'ΙΟΣΑΣΤΑΝ', u'ΙΟΥΝΤΑΝΕ', u'ΟΥΜΑΣΤΑΝ', u'ΟΥΣΑΣΤΑΝ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΝΤΟΥΣΑΝ', u'ΟΜΑΣΤΑΝ', u'ΟΥΝΤΑΝΕ', u'ΟΣΑΣΤΑΝ', u'ΑΡΗΣΑΜΕ', u'ΑΡΗΣΑΤΕ', u'ΙΟΜΑΣΤΕ', u'ΙΟΣΑΣΤΕ', u'ΙΟΥΝΤΑΙ', u'ΟΥΜΑΣΤΕ',
-                       u'ΙΟΝΤΑΝΕ', u'ΙΟΥΝΤΑΝ']:
-            if suffix in [u'ΙΟΥΝΤΑΙ', u'ΙΟΥΝΤΑΝ'] and len(word.decode('utf-8')) > 7:
-                if word.decode('utf-8')[-8] in vowels:
-                    continue
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΥΝΤΑΝ', u'ΙΟΝΤΑΝ', u'ΟΝΤΑΝΕ', u'ΟΥΝΤΑΙ', u'ΟΣΑΣΤΕ', u'ΟΜΑΣΤΕ', u'ΟΥΣΑΜΕ', u'ΟΥΣΑΤΕ', u'ΟΥΣΑΝΕ', u'ΟΥΜΕΘΑ', u'ΑΡΟΥΜΕ',
-                       u'ΙΟΝΤΑΙ', u'ΑΡΗΣΑΝ', u'ΟΣΑΣΤΕ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΑΓΑΜΕ', u'ΑΓΑΤΕ', u'ΟΥΣΘΕ', u'ΩΜΕΘΑ', u'ΑΡΕΤΕ', u'ΑΡΟΥΝ', u'ΩΝΤΑΣ', u'ΩΝΤΑΙ', u'ΑΡΑΜΕ', u'ΑΡΑΤΕ', u'ΑΡΑΝΕ', u'ΟΝΤΑΣ',
-                       u'ΗΚΑΜΕ', u'ΕΙΣΤΕ', u'ΟΝΤΑΙ', u'ΗΚΑΤΕ', u'ΗΚΑΝΕ', u'ΑΓΑΝΕ', u'ΟΝΤΑΝ', u'ΙΕΣΤΕ', u'ΟΥΤΑΝ', u'ΟΥΣΙΝ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΥΣΑΝ', u'ΟΥΤΕ', u'ΜΕΘΑ', u'ΝΤΑΙ', u'ΗΜΕΝ', u'ΗΣΕΝ', u'ΗΣΑΝ', u'ΗΚΑΝ', u'ΟΥΜΕ', u'ΟΥΝΕ', u'ΕΙΤΕ', u'ΑΣΘΕ', u'ΑΓΑΝ', u'ΕΣΤΕ',
-                       u'ΑΡΑΝ', u'ΩΜΕΝ', u'ΟΥΣΙ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΜΕ', u'ΕΤΕ', u'ΑΜΕ', u'ΑΤΕ', u'ΑΝΕ', u'ΟΥΝ', u'ΗΤΕ', u'ΣΘΕ', u'ΝΤΟ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΑΝ', u'ΤΕ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
+        suffix = [u'ΙΟΝΤΟΥΣΑΝ', u'ΙΟΜΑΣΤΑΝ', u'ΙΟΣΑΣΤΑΝ', u'ΙΟΥΝΤΑΝΕ', u'ΟΥΜΑΣΤΑΝ', u'ΟΥΣΑΣΤΑΝ', u'ΟΝΤΟΥΣΑΝ', u'ΟΜΑΣΤΑΝ', u'ΟΥΝΤΑΝΕ', u'ΟΣΑΣΤΑΝ',
+                  u'ΑΡΗΣΑΜΕ', u'ΑΡΗΣΑΤΕ', u'ΙΟΜΑΣΤΕ', u'ΙΟΣΑΣΤΕ', u'ΙΟΥΝΤΑΙ', u'ΟΥΜΑΣΤΕ', u'ΙΟΝΤΑΝΕ', u'ΙΟΥΝΤΑΝ', u'ΑΓΑΜΕ', u'ΑΓΑΤΕ', u'ΟΥΣΘΕ',
+                  u'ΩΜΕΘΑ', u'ΑΡΕΤΕ', u'ΑΡΟΥΝ', u'ΩΝΤΑΣ', u'ΩΝΤΑΙ', u'ΑΡΑΜΕ', u'ΑΡΑΤΕ', u'ΑΡΑΝΕ', u'ΟΝΤΑΣ', u'ΗΚΑΜΕ', u'ΕΙΣΤΕ', u'ΟΝΤΑΙ', u'ΗΚΑΤΕ',
+                  u'ΗΚΑΝΕ', u'ΑΓΑΝΕ', u'ΟΝΤΑΝ', u'ΙΕΣΤΕ', u'ΟΥΤΑΝ', u'ΟΥΣΙΝ', u'ΟΥΣΑΝ', u'ΟΥΤΕ', u'ΜΕΘΑ', u'ΝΤΑΙ', u'ΗΜΕΝ', u'ΗΣΕΝ', u'ΗΣΑΝ', u'ΗΚΑΝ',
+                  u'ΟΥΜΕ', u'ΟΥΝΕ', u'ΕΙΤΕ', u'ΑΣΘΕ', u'ΑΓΑΝ', u'ΕΣΤΕ', u'ΑΡΑΝ', u'ΩΜΕΝ', u'ΟΥΣΙ', u'ΟΜΕ', u'ΕΤΕ', u'ΑΜΕ', u'ΑΤΕ', u'ΑΝΕ', u'ΟΥΝ',
+                  u'ΗΤΕ', u'ΣΘΕ', u'ΝΤΟ', u'ΑΝ', u'ΤΕ']
+
+        for ii in range(len(suffix)):
+            if suffix[ii] in [u'ΙΟΥΝΤΑΙ', u'ΙΟΥΝΤΑΝ'] and len(word) > 7:
+                if word[-8] in vowels:                    continue
+            if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 1:
+                return word[:len(word) - len(suffix[ii])]
 
     return word

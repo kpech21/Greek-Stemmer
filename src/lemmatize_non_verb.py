@@ -49,7 +49,6 @@ def stem(word, pos, is_unlemmatized_word, has_extra_sigma, irregular_adjectives,
     :return: string
         -Return the lemmatized word
     """
-
     # rule-set 1Α ---> for the unlemmatized words, initial and lemmatized words are same
     if word in is_unlemmatized_word:
         return word
@@ -78,124 +77,76 @@ def stem(word, pos, is_unlemmatized_word, has_extra_sigma, irregular_adjectives,
     if pos in ['NNN', 'NNSN', 'NNPN', 'NNPSN']:
         for suffix in [u'ΜΑΤΟΣ', u'ΜΑΤΩΝ', u'ΜΑΤΑ', u'ΜΑ']:
             if ends_with(word, suffix):
-                return word[:len(word) - len(suffix)] + 'Μ'     # reduce the suffix and add M character
+                return word[:len(word) - len(suffix)] + u'Μ'     # reduce the suffix and add M character
 
     # rule-set 3 ---> suffix for proper names
     if pos in ['NNPM', 'NNPF', 'NNPN', 'NNPSM', 'NNPSF', 'NNPSN']:
-        for suffix in [u'ΟΝΟΣ', u'ΩΝΟΣ', u'ΟΡΟΣ', u'ΕΥΣ', u'ΕΩΣ', u'ΟΝΤΟΣ', u'ΚΤΟΣ', u'ΟΥΣ']:
-            if ends_with(word, suffix):
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΩΝ', u'ΩΡ', u'ΙΣ', u'Ξ', u'Ω', u'ΩΣ']:
-            if ends_with(word, suffix):
-                return word[:len(word) - len(suffix)]
+        suffix = [u'ΟΝΟΣ', u'ΩΝΟΣ', u'ΟΡΟΣ', u'ΕΥΣ', u'ΕΩΣ', u'ΟΝΤΟΣ', u'ΚΤΟΣ', u'ΟΥΣ', u'ΩΝ', u'ΩΡ', u'ΙΣ', u'ΩΣ', u'Ξ', u'Ω']
+        for ii in range(len(suffix)):
+            if ends_with(word, suffix[ii]):
+                return word[:len(word) - len(suffix[ii])]
 
-    # rule-set 4 ---> irregular adjective
-    for cur_word in irregular_adjectives:		# for every word in irregular adjective
-        suf = len(word)-len(cur_word) 	        # number of additional letters-suffix
-        if word[:-suf] == cur_word:
-            for suffix in [u'ΤΕΡΟΥΣ', u'ΤΕΡΟΣ', u'ΤΕΡΟΝ', u'ΤΕΡΟΥ', u'ΤΕΡΗΣ', u'ΤΕΡΟΙ', u'ΤΕΡΩΝ', u'ΤΕΡΕΣ', u'ΤΑΤΟΣ', u'ΤΑΤΟΥ', u'ΤΑΤΗΣ', u'ΤΑΤΟΙ',
-                           u'ΤΑΤΩΝ', u'ΤΑΤΕΣ']:
-                if ends_with(word, suffix):
-                    return word[:len(word) - len(suffix)]
-            for suffix in [u'ΤΕΡΟ', u'ΤΕΡΗ', u'ΤΕΡΑ', u'ΤΑΤΟ', u'ΤΑΤΗ', u'ΤΑΤΑ']:
-                if ends_with(word, suffix):
-                    return word[:len(word) - len(suffix)]
-
-    # rule-set 6 ---> Adjectives AND Participles
+    # rule-set 4 ---> Adjectives AND Participles
     if 'JJ' in pos or pos in ['VBG', 'VBP', 'VBPD', 'PRP', 'PP', 'REP', 'DP', 'IP', 'WP', 'QP', 'INP', 'CD']:
-        suffix_5 = [u'ΜΕΝΟΣ', u'ΜΕΝΟΥ', u'ΜΕΝΗΣ', u'ΜΕΝΟΙ', u'ΜΕΝΩΝ', u'ΩΜΕΝΟ', u'ΩΜΕΝΗ', u'ΩΜΕΝΑ', u'ΥΤΕΡΑ', u'ΥΤΑΤΑ', u'ΥΤΕΡΟ', u'ΟΤΑΤΗ',
-                    u'ΜΕΝΕΣ', u'ΟΜΕΝΑ', u'ΩΜΕΝΟ', u'ΩΜΕΝΗ', u'ΟΤΕΡΟ', u'ΟΤΕΡΗ', u'ΕΙΣΕΣ', u'ΟΜΕΝΟ', u'ΟΜΕΝΗ', u'ΥΤΕΡΗ', u'ΟΤΕΡΑ', u'ΜΕΝΟΙ',
-                    u'ΥΤΑΤΗ', u'ΟΤΑΤΟ', u'ΟΤΑΤΑ', u'ΜΕΝΟΥ', u'ΜΕΝΟΣ', u'ΗΜΕΝΗ', u'ΜΕΝΩΝ', u'ΜΕΝΗΣ', u'ΗΜΕΝΟ', u'ΗΜΕΝΑ', u'ΟΝΤΑΣ', u'ΩΝΤΑΣ',
-                    u'ΩΤΕΡΟ', u'ΩΤΕΡΕ', u'ΩΤΕΡΗ', u'ΩΤΕΡΑ', u'ΩΤΑΤΟ', u'ΩΤΑΤΕ', u'ΩΤΑΤΗ', u'ΩΤΑΤΑ']
-        suffix_6 = [u'ΥΤΕΡΕΣ', u'ΩΜΕΝΟΥ', u'ΟΤΑΤΩΝ', u'ΕΣΤΑΤΟ', u'ΕΣΤΑΤΗ', u'ΥΤΑΤΩΝ', u'ΥΤΕΡΗΣ', u'ΟΜΕΝΟΣ', u'ΟΤΕΡΟΙ', u'ΟΤΕΡΩΝ', u'ΥΤΑΤΟΣ',
-                    u'ΥΤΑΤΟΥ', u'ΕΣΤΑΤΑ', u'ΥΤΑΤΗΣ', u'ΟΤΕΡΟΣ', u'ΟΤΕΡΟΥ', u'ΥΤΑΤΕΣ', u'ΟΤΕΡΕΣ', u'ΥΤΕΡΟΙ', u'ΥΤΕΡΩΝ', u'ΑΙΤΕΡΟ', u'ΟΤΕΡΗΣ',
-                    u'ΥΤΕΡΟΣ', u'ΑΙΤΕΡΗ', u'ΑΙΤΕΡΑ', u'ΜΕΝΟΥΣ', u'ΥΤΕΡΟΥ', u'ΩΜΕΝΗΣ', u'ΩΜΕΝΩΝ', u'ΩΜΕΝΕΣ', u'ΟΥΜΕΝΟ', u'ΟΥΜΕΝΗ', u'ΟΥΜΕΝΑ',
-                    u'ΟΜΕΝΕΣ', u'ΩΜΕΝΟΣ', u'ΟΜΕΝΗΣ', u'ΟΜΕΝΩΝ', u'ΕΣΤΕΡΟ', u'ΕΣΤΕΡΗ', u'ΕΣΤΕΡΑ', u'ΟΤΑΤΟΣ', u'ΟΤΑΤΗΣ', u'ΟΜΕΝΟΥ', u'ΟΤΑΤΟΙ',
-                    u'ΥΤΑΤΟΙ', u'ΟΤΑΤΟΥ', u'ΗΜΕΝΗΣ', u'ΟΜΕΝΟΙ', u'ΗΜΕΝΟΥ', u'ΗΜΕΝΟΙ', u'ΗΜΕΝΩΝ', u'ΜΕΝΟΥΣ', u'ΗΜΕΝΟΣ', u'ΩΜΕΝΟΙ', u'ΟΤΑΤΕΣ',
-                    u'ΩΤΕΡΟΣ', u'ΩΤΕΡΟΥ', u'ΩΤΕΡΟΝ', u'ΩΤΕΡΟΙ', u'ΩΤΕΡΩΝ', u'ΩΤΕΡΗΣ', u'ΩΤΕΡΕΣ', u'ΩΤΕΡΑΣ', u'ΩΤΑΤΟΣ', u'ΩΤΑΤΟΥ', u'ΩΤΑΤΟΙ',
-                    u'ΩΤΑΤΩΝ', u'ΩΤΑΤΗΣ', u'ΩΤΑΤΕΣ']
-        suffix_7 = [u'ΥΤΕΡΟΥΣ', u'ΕΣΤΕΡΟΙ', u'ΕΣΤΕΡΩΝ', u'ΕΣΤΕΡΕΣ', u'ΟΥΣΤΕΡΗ', u'ΩΜΕΝΟΥΣ', u'ΕΣΤΑΤΗΣ', u'ΕΣΤΕΡΑΣ', u'ΕΣΤΕΡΗΣ', u'ΟΥΣΤΕΡΟ',
-                    u'ΑΣΜΕΝΟΙ', u'ΟΤΕΡΟΥΣ', u'ΕΣΤΑΤΟΥ', u'ΕΣΤΑΤΟΣ', u'ΟΥΣΤΕΡΑ', u'ΕΣΤΑΤΕΣ', u'ΥΤΑΤΟΥΣ', u'ΕΣΤΕΡΟΥ', u'ΕΣΤΕΡΟΣ', u'ΑΙΤΕΡΟΣ',
-                    u'ΑΙΤΕΡΟΥ', u'ΕΣΤΑΤΟΙ', u'ΑΙΤΕΡΟΙ', u'ΑΙΤΕΡΩΝ', u'ΑΙΤΕΡΗΣ', u'ΑΙΤΕΡΑΣ', u'ΟΥΜΕΝΟΥ', u'ΟΥΜΕΝΟΣ', u'ΟΥΜΕΝΗΣ', u'ΟΥΜΕΝΩΝ',
-                    u'ΟΥΜΕΝΕΣ', u'ΟΜΕΝΟΥΣ', u'ΕΣΤΑΤΩΝ', u'ΕΣΤΕΡΟΝ', u'ΗΜΕΝΟΥΣ', u'ΟΥΣΤΑΤΗ', u'ΟΥΣΤΑΤΑ', u'ΕΣΤΕΡΟΝ', u'ΟΥΣΤΑΤΟ', u'ΩΤΕΡΟΥΣ',
-                    u'ΩΤΑΤΟΥΣ']
-        suffix_8 = [u'ΟΥΣΤΕΡΟΥ', u'ΟΥΣΤΕΡΟΣ', u'ΕΣΤΕΡΟΥΣ', u'ΟΥΣΤΕΡΗΣ', u'ΕΣΤΑΤΟΥΣ', u'ΟΥΣΤΕΡΩΝ', u'ΟΥΣΤΑΤΕΣ', u'ΟΥΣΤΕΡΕΣ', u'ΟΥΣΤΕΡΟΙ',
-                    u'ΑΙΤΕΡΟΥΣ', u'ΟΥΣΤΑΤΟΣ', u'ΟΥΣΤΑΤΟΥ', u'ΟΥΣΤΑΤΗΣ', u'ΟΥΣΤΑΤΩΝ']
+        suffix = [u'ΟΥΣΤΕΡΟΥΣ', u'ΟΥΣΤΑΤΟΥΣ', u'ΟΥΣΤΕΡΟΥ', u'ΟΥΣΤΕΡΟΣ', u'ΕΣΤΕΡΟΥΣ', u'ΟΥΣΤΕΡΗΣ', u'ΕΣΤΑΤΟΥΣ', u'ΟΥΣΤΕΡΩΝ', u'ΟΥΣΤΑΤΕΣ', u'ΟΥΣΤΕΡΕΣ',
+                  u'ΟΥΣΤΕΡΟΙ', u'ΑΙΤΕΡΟΥΣ', u'ΟΥΣΤΑΤΟΣ', u'ΟΥΣΤΑΤΟΥ', u'ΟΥΣΤΑΤΗΣ', u'ΟΥΣΤΑΤΩΝ', u'ΥΤΕΡΟΥΣ', u'ΕΣΤΕΡΟΙ', u'ΕΣΤΕΡΩΝ', u'ΕΣΤΕΡΕΣ',
+                  u'ΟΥΣΤΕΡΗ', u'ΩΜΕΝΟΥΣ', u'ΕΣΤΑΤΗΣ', u'ΕΣΤΕΡΑΣ', u'ΕΣΤΕΡΗΣ', u'ΟΥΣΤΕΡΟ', u'ΑΣΜΕΝΟΙ', u'ΟΤΕΡΟΥΣ', u'ΕΣΤΑΤΟΥ', u'ΕΣΤΑΤΟΣ', u'ΟΥΣΤΕΡΑ',
+                  u'ΕΣΤΑΤΕΣ', u'ΥΤΑΤΟΥΣ', u'ΕΣΤΕΡΟΥ', u'ΕΣΤΕΡΟΣ', u'ΑΙΤΕΡΟΣ', u'ΑΙΤΕΡΟΥ', u'ΕΣΤΑΤΟΙ', u'ΑΙΤΕΡΟΙ', u'ΑΙΤΕΡΩΝ', u'ΑΙΤΕΡΗΣ', u'ΑΙΤΕΡΑΣ',
+                  u'ΟΥΜΕΝΟΥ', u'ΟΥΜΕΝΟΣ', u'ΟΥΜΕΝΗΣ', u'ΟΥΜΕΝΩΝ', u'ΟΥΜΕΝΕΣ', u'ΟΜΕΝΟΥΣ', u'ΕΣΤΑΤΩΝ', u'ΕΣΤΕΡΟΝ', u'ΗΜΕΝΟΥΣ', u'ΟΥΣΤΑΤΗ', u'ΟΥΣΤΑΤΑ',
+                  u'ΕΣΤΕΡΟΝ', u'ΟΥΣΤΑΤΟ', u'ΩΤΕΡΟΥΣ', u'ΩΤΑΤΟΥΣ', u'ΥΤΕΡΕΣ', u'ΩΜΕΝΟΥ', u'ΟΤΑΤΩΝ', u'ΕΣΤΑΤΟ', u'ΕΣΤΑΤΗ', u'ΥΤΑΤΩΝ', u'ΥΤΕΡΗΣ',
+                  u'ΟΜΕΝΟΣ', u'ΟΤΕΡΟΙ', u'ΟΤΕΡΩΝ', u'ΥΤΑΤΟΣ', u'ΥΤΑΤΟΥ', u'ΕΣΤΑΤΑ', u'ΥΤΑΤΗΣ', u'ΟΤΕΡΟΣ', u'ΟΤΕΡΟΥ', u'ΥΤΑΤΕΣ', u'ΟΤΕΡΕΣ', u'ΥΤΕΡΟΙ',
+                  u'ΥΤΕΡΩΝ', u'ΑΙΤΕΡΟ', u'ΟΤΕΡΗΣ', u'ΥΤΕΡΟΣ', u'ΑΙΤΕΡΗ', u'ΑΙΤΕΡΑ', u'ΜΕΝΟΥΣ', u'ΥΤΕΡΟΥ', u'ΩΜΕΝΗΣ', u'ΩΜΕΝΩΝ', u'ΩΜΕΝΕΣ', u'ΟΥΜΕΝΟ',
+                  u'ΟΥΜΕΝΗ', u'ΟΥΜΕΝΑ', u'ΟΜΕΝΕΣ', u'ΩΜΕΝΟΣ', u'ΟΜΕΝΗΣ', u'ΟΜΕΝΩΝ', u'ΕΣΤΕΡΟ', u'ΕΣΤΕΡΗ', u'ΕΣΤΕΡΑ', u'ΟΤΑΤΟΣ', u'ΟΤΑΤΗΣ', u'ΟΜΕΝΟΥ',
+                  u'ΟΤΑΤΟΙ', u'ΥΤΑΤΟΙ', u'ΟΤΑΤΟΥ', u'ΗΜΕΝΗΣ', u'ΟΜΕΝΟΙ', u'ΗΜΕΝΟΥ', u'ΗΜΕΝΟΙ', u'ΗΜΕΝΩΝ', u'ΜΕΝΟΥΣ', u'ΗΜΕΝΟΣ', u'ΩΜΕΝΟΙ', u'ΟΤΑΤΕΣ',
+                  u'ΩΤΕΡΟΣ', u'ΩΤΕΡΟΥ', u'ΩΤΕΡΟΝ', u'ΩΤΕΡΟΙ', u'ΩΤΕΡΩΝ', u'ΩΤΕΡΗΣ', u'ΩΤΕΡΕΣ', u'ΩΤΕΡΑΣ', u'ΩΤΑΤΟΣ', u'ΩΤΑΤΟΥ', u'ΩΤΑΤΟΙ', u'ΩΤΑΤΩΝ',
+                  u'ΩΤΑΤΗΣ', u'ΩΤΑΤΕΣ', u'ΜΕΝΟΣ', u'ΜΕΝΟΥ', u'ΜΕΝΗΣ', u'ΜΕΝΟΙ', u'ΜΕΝΩΝ', u'ΩΜΕΝΟ', u'ΩΜΕΝΗ', u'ΩΜΕΝΑ', u'ΥΤΕΡΑ', u'ΥΤΑΤΑ', u'ΥΤΕΡΟ',
+                  u'ΟΤΑΤΗ',  u'ΜΕΝΕΣ', u'ΟΜΕΝΑ', u'ΩΜΕΝΟ', u'ΩΜΕΝΗ', u'ΟΤΕΡΟ', u'ΟΤΕΡΗ', u'ΕΙΣΕΣ', u'ΟΜΕΝΟ', u'ΟΜΕΝΗ', u'ΥΤΕΡΗ', u'ΟΤΕΡΑ', u'ΜΕΝΟΙ',
+                  u'ΥΤΑΤΗ', u'ΟΤΑΤΟ', u'ΟΤΑΤΑ', u'ΜΕΝΟΥ', u'ΜΕΝΟΣ', u'ΗΜΕΝΗ', u'ΜΕΝΩΝ', u'ΜΕΝΗΣ', u'ΗΜΕΝΟ', u'ΗΜΕΝΑ', u'ΟΝΤΑΣ', u'ΩΝΤΑΣ', u'ΩΤΕΡΟ',
+                  u'ΩΤΕΡΕ', u'ΩΤΕΡΗ', u'ΩΤΕΡΑ', u'ΩΤΑΤΟ', u'ΩΤΑΤΕ', u'ΩΤΑΤΗ', u'ΩΤΑΤΑ', u'ΜΕΝΟ', u'ΜΕΝΗ', u'ΜΕΝΑ', u'ΕΙΕΣ', u'ΕΙΩΝ', u'ΟΥΣ', u'ΕΩΣ',
+                  u'ΕΟΣ', u'ΩΣΑ', u'ΟΥΝ', u'ΕΙΣ', u'ΟΥΣ', u'ΕΩΝ', u'ΙΣ', u'ΟΣ', u'ΥΣ', u'ΟΥ', u'ΑΣ', u'ΗΣ', u'ΟΣ', u'ΕΣ', u'ΕΑ', u'ΩΝ', u'ΤΙ', u'ΕΙ',
+                  u'ΟΝ', u'ΑΝ', u'ΕΝ', u'ΙΝ', u'ΟΙ', u'Η', u'Α', u'Ο',  u'Ι', u'Υ', u'Ε']
 
-        for suffix in [u'ΟΥΣΤΕΡΟΥΣ', u'ΟΥΣΤΑΤΟΥΣ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in suffix_8:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in suffix_7:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in suffix_6:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in suffix_5:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΜΕΝΟ', u'ΜΕΝΗ', u'ΜΕΝΑ', u'ΕΙΕΣ', u'ΕΙΩΝ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΥΣ', u'ΕΩΣ', u'ΕΟΣ', u'ΩΣΑ', u'ΟΥΝ', u'ΕΙΣ', u'ΟΥΣ', u'ΕΩΝ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΙΣ', u'ΟΣ', u'ΥΣ', u'ΟΥ', u'ΑΣ', u'ΗΣ', u'ΟΣ', u'ΕΣ', u'ΕΑ', u'ΩΝ', u'ΤΙ', u'ΕΙ', u'ΟΝ', u'ΑΝ', u'ΕΝ', u'ΙΝ', u'ΟΙ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'Η', u'Α', u'Ο',  u'Ι', u'Υ', u'Ε'] :
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 1:
-                return word[:len(word) - len(suffix)]
+        for ii in range(len(suffix)):
+            if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 1:
+                return word[:len(word) - len(suffix[ii])]
 
-    # rule-set 7 --- Singular Noun
+    # rule-set 5 --- Singular Noun
     elif pos in ['NNM', 'NNF', 'NNN', 'NNPM', 'NNPF', 'NNPN']:
 
         if pos in ['NNF', 'NNPF']:
             if word[-3:] in [u'ΕΑΣ', u'ΙΑΣ'] and len(word[:-2]) > 1:
                 return word[:-2]
-        for suffix in [u'ΟΥΣ', u'ΕΩΣ', u'ΕΟΣ', u'ΟΥΝ', u'ΕΙΣ']:
-            if (pos in ['NNF', 'NNPF']) and (suffix == u'ΤΗΣ'):  # if word is female and suffix is -ΤΗΣ
-                continue
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                    return word[:len(word) - len(suffix)]
-        for suffix in [u'ΥΣ', u'ΩΣ', u'ΟΥ', u'ΑΣ', u'ΗΣ', u'ΟΣ', u'ΕΣ', u'ΩΝ', u'ΕΙ', u'ΟΝ', u'ΑΝ', u'ΕΝ', u'ΙΝ', u'ΟΙ', u'ΙΣ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'Η', u'Α', u'Ω', u'Ο', u'Ι', u'Ε'] :
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
 
-    # rule-set 8 --- Plural Noun
+        suffix = [u'ΟΥΣ', u'ΕΩΣ', u'ΕΟΣ', u'ΟΥΝ', u'ΕΙΣ', u'ΥΣ', u'ΩΣ', u'ΟΥ', u'ΑΣ', u'ΗΣ', u'ΟΣ', u'ΕΣ', u'ΩΝ', u'ΕΙ', u'ΟΝ', u'ΑΝ', u'ΕΝ', u'ΙΝ',
+                  u'ΟΙ', u'ΙΣ', u'Η', u'Α', u'Ω', u'Ο', u'Ι', u'Ε']
+        for ii in range(len(suffix)):
+            if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 0:
+                return word[:len(word) - len(suffix[ii])]
+
+    # rule-set 6 --- Plural Noun
     elif pos in ['NNSM', 'NNSF', 'NNSN', 'NNPSM', 'NNPSF', 'NNPSN']:
-        for suffix in [u'ΕΙΣΕΣ', u'ΕΙΣΩΝ', u'ΙΑΔΕΣ', u'ΙΑΔΩΝ', u'ΟΥΔΕΣ', u'ΟΥΔΩΝ', u'ΙΜΑΤΑ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΥΣ', u'ΕΙΣ', u'ΕΩΝ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΙ', u'ΩΝ', u'ΕΣ', u'ΕΑ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'Α', u'Η']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
+        suffix = [u'ΕΙΣΕΣ', u'ΕΙΣΩΝ', u'ΙΑΔΕΣ', u'ΙΑΔΩΝ', u'ΟΥΔΕΣ', u'ΟΥΔΩΝ', u'ΙΜΑΤΑ', u'ΟΥΣ', u'ΕΙΣ', u'ΕΩΝ', u'ΟΙ', u'ΩΝ', u'ΕΣ', u'ΕΑ', u'Α',
+                  u'Η']
+        for ii in range(len(suffix)):
+            if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 0:
+                return word[:len(word) - len(suffix[ii])]
 
-    # rule-set 9 --- Adverb
+    # rule-set 7 --- Adverb
     elif pos == 'RB':
-        for suffix in [u'ΟΥΣΤΑΤΑ', u'ΑΙΤΕΡΑ', u'ΑΙΤΕΡΩΣ', u'ΟΤΑΤΑ', u'ΕΣΤΑΤΑ', u'ΥΤΑΤΑ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΟΤΕΡΟ', u'ΟΤΕΡΑ', u'ΕΣΤΕΡΑ', u'ΑΙΤΕΡΑ', u'ΥΤΕΡΑ', u'ΑΣΙΑ', u'ΜΕΝΑ', u'ΕΩΣ', u'ΤΑΤΑ']:
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'ΩΣ', u'ΟΥ'] :
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
-        for suffix in [u'Α', u'Υ', u'Ο'] :
-            if ends_with(word, suffix) and (len(word) - len(suffix)) > 0:
-                return word[:len(word) - len(suffix)]
+        suffix = [u'ΟΥΣΤΑΤΑ', u'ΑΙΤΕΡΑ', u'ΑΙΤΕΡΩΣ', u'ΟΤΑΤΑ', u'ΕΣΤΑΤΑ', u'ΥΤΑΤΑ', u'ΟΤΕΡΟ', u'ΟΤΕΡΑ', u'ΕΣΤΕΡΑ', u'ΑΙΤΕΡΑ', u'ΥΤΕΡΑ', u'ΑΣΙΑ',
+                  u'ΜΕΝΑ', u'ΕΩΣ', u'ΤΑΤΑ', u'ΩΣ', u'ΟΥ', u'Α', u'Υ', u'Ο']
+        for ii in range(len(suffix)):
+            if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 0:
+                return word[:len(word) - len(suffix[ii])]
+
+    # rule-set 8 ---> irregular adjectives
+    for cur_word in irregular_adjectives:		# for every word in irregular adjective
+        suf = len(word)-len(cur_word) 	        # number of additional letters-suffix
+        if word[:-suf] == cur_word:
+            suffix = [u'ΤΕΡΟΥΣ', u'ΤΕΡΟΣ', u'ΤΕΡΟΝ', u'ΤΕΡΟΥ', u'ΤΕΡΗΣ', u'ΤΕΡΟΙ', u'ΤΕΡΩΝ', u'ΤΕΡΕΣ', u'ΤΑΤΟΣ', u'ΤΑΤΟΥ', u'ΤΑΤΗΣ', u'ΤΑΤΟΙ',
+                      u'ΤΑΤΩΝ', u'ΤΑΤΕΣ', u'ΤΕΡΟ', u'ΤΕΡΗ', u'ΤΕΡΑ', u'ΤΑΤΟ', u'ΤΑΤΗ', u'ΤΑΤΑ']
+            for ii in range(len(suffix)):
+                if ends_with(word, suffix[ii]):
+                    return word[:len(word) - len(suffix[ii])]
 
     return word
