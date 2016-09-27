@@ -1,5 +1,5 @@
 {
-  "Noun": ["NNM", "NNF", "NNN", "NNSM", "NNSF", "NNSN"],
+  "Noun": ["NNM", "NNF", "NNN", "NNSM", "NNSF", "NNSN", "NNPM", "NNPF", "NNPN", "NNPSM", "NNPSF", "NNPSN"],
   "Verb": ["VB", "VBD", "VBF", "MD", "VBS", "VBDS", "VBFS"],
   "Adjective": ["JJM", "JJF", "JJN", "JJSM", "JJSF", "JJSN", "CD"]
 }
