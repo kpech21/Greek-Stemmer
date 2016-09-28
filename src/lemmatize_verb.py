@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/python
-#   stemmer_gr.py is free software: you can redistribute it and/or modify
+#   lemmatize_verb.py is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
@@ -49,10 +49,9 @@ def stem(word, pos, vowels):
     # rule-set 1 --- Irregular verbs
     if word in [u'ΕΙΜΑΙ', u'ΕΙΣΑΙ', u'ΕΙΝΑΙ', u'ΕΙΜΑΣΤΕ', u'ΕΙΣΤΕ', u'ΕΙΣΑΣΤΕ']:
         return 'ΕΙ'
-    elif word in [u'ΗΜΟΥΝ', u'ΗΣΟΥΝ', u'ΗΤΑΝΕ', u'ΗΜΟΥΝΑ', u'ΗΣΟΥΝΑ', u'ΗΜΑΣΤΕ', u'ΗΣΑΣΤΕ', u'ΗΜΑΣΤΑΝ', u'ΗΣΑΣΤΑΝ', u'ΗΤΑΝ']:
-        return 'Η'
-    elif word in [u'ΔΩ', u'ΔΕΙΣ', u'ΔΕΙ', u'ΔΟΥΜΕ', u'ΔΕΙΤΕ', u'ΔΟΥΝ', u'ΠΩ', u'ΠΕΙΣ', u'ΠΕΙ', u'ΠΟΥΜΕ', u'ΠΕΙΤΕ', u'ΠΟΥΝ', u'ΖΩ', u'ΖΕΙΣ', u'ΖΕΙ',
-                  u'ΖΟΥΜΕ', u'ΖΕΙΤΕ', u'ΖΟΥΝ', u'ΖΟΥΝΕ', u'ΖΟΥΣΑ', u'ΖΟΥΣΕΣ', u'ΖΟΥΣΕ', u'ΖΟΥΣΑΜΕ', u'ΖΟΥΣΑΤΕ', u'ΖΟΥΣΑΝΕ', u'ΖΟΥΣΑΝ']:
+    elif word in [u'ΗΜΟΥΝ', u'ΗΣΟΥΝ', u'ΗΤΑΝΕ', u'ΗΜΟΥΝΑ', u'ΗΣΟΥΝΑ', u'ΗΜΑΣΤΕ', u'ΗΣΑΣΤΕ', u'ΗΜΑΣΤΑΝ', u'ΗΣΑΣΤΑΝ', u'ΗΤΑΝ', u'ΔΩ', u'ΔΕΙΣ', u'ΔΕΙ',
+                  u'ΔΟΥΜΕ', u'ΔΕΙΤΕ', u'ΔΟΥΝ', u'ΠΩ', u'ΠΕΙΣ', u'ΠΕΙ', u'ΠΟΥΜΕ', u'ΠΕΙΤΕ', u'ΠΟΥΝ', u'ΖΩ', u'ΖΕΙΣ', u'ΖΕΙ', u'ΖΟΥΜΕ', u'ΖΕΙΤΕ',
+                  u'ΖΟΥΝ', u'ΖΟΥΝΕ', u'ΖΟΥΣΑ', u'ΖΟΥΣΕΣ', u'ΖΟΥΣΕ', u'ΖΟΥΣΑΜΕ', u'ΖΟΥΣΑΤΕ', u'ΖΟΥΣΑΝΕ', u'ΖΟΥΣΑΝ']:
         return word[0]
 
     # rule-set 2 --- ACTIVE VOICE, Singular --- PASSIVE VOICE, Singular
@@ -81,7 +80,8 @@ def stem(word, pos, vowels):
 
         for ii in range(len(suffix)):
             if suffix[ii] in [u'ΙΟΥΝΤΑΙ', u'ΙΟΥΝΤΑΝ'] and len(word) > 7:
-                if word[-8] in vowels:                    continue
+                if word[-8] in vowels:
+                    continue
             if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 1:
                 return word[:len(word) - len(suffix[ii])]
 
