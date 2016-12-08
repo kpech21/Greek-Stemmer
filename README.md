@@ -45,11 +45,11 @@ Although there is a variety of stemmers, the unique morphological system of each
 | παραπάνω (more) | παραπάν (confused with the stem of the verbs) | παραπάνω |
 
 
-#### Example usage
+#### Usage
 
 ```python
-$ from GreekStemmer import Stemmer
-$ stemmer = Stemmer()
-$ stemmer.stem("ΕΡΓΑΖΟΜΕΝΟΣ", "VBG")
+>>> from GreekStemmer import Stemmer
+>>> stemmer = Stemmer()
+>>> stemmer.stem("ΕΡΓΑΖΟΜΕΝΟΣ", "VBG")
 ΕΡΓΑΖ
 ```
