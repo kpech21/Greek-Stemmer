@@ -1,12 +1,8 @@
 ## CONTRIBUTORS
 
-Konstantinos Pechlivanis (kpechlivanis21@gmail.com) in the context of
-his MSc thesis at Technical University of Crete and NCSR "Demokritos",
-on "Corpus Based Methods for Learning Models of Metaphor in Modern
-Greek"
+Konstantinos Pechlivanis (kpechlivanis21@gmail.com) in the context of his MSc thesis at Technical University of Crete and NCSR "Demokritos", on "Corpus Based Methods for Learning Models of Metaphor in Modern Greek"
 
-Eirini Florou (eirini.florou@gmail.com) in the context of her PhD at
-University of Athens, on "Metaphor Detection in Greek"
+Eirini Florou (eirini.florou@gmail.com) in the context of her PhD at University of Athens, on "Metaphor Detection in Greek"
 
 
 
@@ -52,5 +48,8 @@ Although there is a variety of stemmers, the unique morphological system of each
 #### Example usage
 
 ```python
-$ python run_stemmer.py
+$ from GreekStemmer import Stemmer
+$ stemmer = Stemmer()
+$ stemmer.stem("ΕΡΓΑΖΟΜΕΝΟΣ", "VBG")
+ΕΡΓΑΖ
 ```

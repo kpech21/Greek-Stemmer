@@ -1,9 +1,0 @@
-{
-  "Articles": ["DDT", "IDT"],
-  "Noun": ["NNM", "NNF", "NNN", "NNSM", "NNSF", "NNSN", "NNPM", "NNPF", "NNPN", "NNPSM", "NNPSF", "NNPSN"],
-  "Verb": ["VB", "VBD", "VBF", "MD", "VBS", "VBDS", "VBFS"],
-  "Adjective": ["JJM", "JJF", "JJN", "JJSM", "JJSF", "JJSN", "CD"],
-  "Participles":["VBG", "VBP", "VBPD"],
-  "Pronouns": ["PRP", "PP", "REP", "DP", "IP", "WP", "QP", "INP"],
-  "Other": ["RB", "IN", "CC", "RP", "UH", "FW", "DATE", "TIME", "AB", "SYM"]
-}

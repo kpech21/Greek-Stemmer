@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# !/usr/bin/python
 #   lemmatize_non_verb.py is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation, either version 3 of the License, or
@@ -13,16 +12,14 @@
 #   You should have received a copy of the GNU General Public License
 #   along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
-#########################################################################################################################################
-#       THESIS	: Corpus Based Methods for Learning Models of Metaphor in Modern Greek	                                                #
-#                                                                                                                                       #
-#       AUTHOR	: Konstantinos Pechlivanis                                                                                              #
-#                                                                                                                                       #
-#       SUMMARY : this function finds the lemma of words (except for verbs), function "stem" estimates the lemma                        #
-#                 and function "ends_with" estimates the suffix                                                                         #
-#                                                                                                                                       #
-#       OUTPUTS	: return the lemma of word                                                                                              #
-#########################################################################################################################################
+__author__ = "Konstantinos Pechlivanis"
+__copyright__ = "Copyright 2016, Greek-Stemmer"
+__credits__ = ["Konstantinos Pechlivanis", "Eirini Florou"]
+__license__ = "GPL"
+__version__ = "1.2.1"
+__maintainer__ = "Konstantinos Pechlivanis"
+__email__ = "kpechlivanis21@gmail.com"
+__status__ = "Production"
 
 
 def ends_with(word, suffix):
