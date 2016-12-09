@@ -9,7 +9,7 @@ Eirini Florou (eirini.florou@gmail.com) in the context of her PhD at University 
 
 ## DESCRIPTION
 
-The system takes as input, a word (ignore case) and the Part Of Speech tagging(POS) of word and removes its inflexional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language [1]. An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
+Python stemming library that given a word and the Part Of Speech tagging (POS) of the word removes its inflexional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language [1]. An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
 
 [1] David Holton, Peter Mackridge, Ειρήνη Φιλιππάκη-Warburton (2002), "Γραμματική της Ελληνικής Γλώσσας".
 
