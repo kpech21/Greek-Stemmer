@@ -1,90 +1,4 @@
-### Eclipse
-*.pydevproject
-.metadata
-.gradle
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-
-# Eclipse Core
-.project
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
-.cproject
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific
-.buildpath
-
-# sbteclipse plugin
-.target
-
-### NetBeans
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
-.nb-gradle/
-
-### JetBrains
-.idea/
-# if you remove the above rule, at least ignore the following:
-
-# User-specific stuff:
-# .idea/workspace.xml
-# .idea/tasks.xml
-# .idea/dictionaries
-
-# Sensitive or high-churn files:
-# .idea/dataSources.ids
-# .idea/dataSources.xml
-# .idea/sqlDataSources.xml
-# .idea/dynamic.xml
-# .idea/uiDesigner.xml
-
-# Gradle:
-# .idea/gradle.xml
-# .idea/libraries
-
-# Mongo Explorer plugin:
-# .idea/mongoSettings.xml
-
-## File-based project format:
-*.ipr
-*.iws
-
-## Plugin-specific files:
-
-# IntelliJ
-/out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-### Python
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -95,21 +9,22 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
+build/
 develop-eggs/
+dist/
 downloads/
 eggs/
 .eggs/
-Tests/
-fraud_detection_results/
-#src/tools/data/
+lib/
 lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -129,7 +44,10 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*,cover
+*.cover
+.hypothesis/
+.pytest_cache/
+test_coverage/
 
 # Translations
 *.mo
@@ -137,9 +55,56 @@ coverage.xml
 
 # Django stuff:
 *.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
 
 # Sphinx documentation
 docs/_build/
 
 # PyBuilder
 target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+greek-stemmer-env
+
+### JetBrains
+.idea/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
