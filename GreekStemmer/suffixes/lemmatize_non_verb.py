@@ -130,7 +130,7 @@ def stem(word, pos, is_unlemmatized_word, has_extra_sigma, irregular_adjectives,
 
     # rule-set 7 --- Adverb
     elif pos == 'RB':
-        suffix = [u'ΟΥΣΤΑΤΑ', u'ΑΙΤΕΡΑ', u'ΑΙΤΕΡΩΣ', u'ΟΤΑΤΑ', u'ΕΣΤΑΤΑ', u'ΥΤΑΤΑ', u'ΟΤΕΡΟ', u'ΟΤΕΡΑ', u'ΕΣΤΕΡΑ', u'ΑΙΤΕΡΑ', u'ΥΤΕΡΑ', u'ΑΣΙΑ',
+        suffix = [u'ΟΥΣΤΑΤΑ', u'ΑΙΤΕΡΑ', u'ΑΙΤΕΡΩΣ', u'ΟΤΑΤΑ', u'ΕΣΤΑΤΑ', u'ΥΤΑΤΑ', u'ΟΤΕΡΟ', u'ΟΤΕΡΑ', u'ΕΣΤΕΡΑ', u'ΥΤΕΡΑ', u'ΑΣΙΑ',
                   u'ΜΕΝΑ', u'ΕΩΣ', u'ΤΑΤΑ', u'ΩΣ', u'ΟΥ', u'Α', u'Υ', u'Ο']
         for ii in range(len(suffix)):
             if ends_with(word, suffix[ii]) and (len(word) - len(suffix[ii])) > 0:
