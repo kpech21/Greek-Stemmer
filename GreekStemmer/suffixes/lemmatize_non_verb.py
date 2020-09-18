@@ -112,7 +112,7 @@ def stem(word, pos, is_unlemmatized_word, has_extra_sigma, irregular_adjectives,
 
         if pos in ['NNF', 'NNPF']:
             if word[-3:] in [u'ΕΑΣ', u'ΙΑΣ'] and len(word[:-2]) > 1:
-                return word[:-2]
+                return word[:len(word) - 2]
 
         suffix = [u'ΟΥΣ', u'ΕΩΣ', u'ΕΟΣ', u'ΟΥΝ', u'ΕΙΣ', u'ΥΣ', u'ΩΣ', u'ΟΥ', u'ΑΣ', u'ΗΣ', u'ΟΣ', u'ΕΣ', u'ΩΝ', u'ΕΙ', u'ΟΝ', u'ΑΝ', u'ΕΝ', u'ΙΝ',
                   u'ΟΙ', u'ΙΣ', u'Η', u'Α', u'Ω', u'Ο', u'Ι', u'Ε']
