@@ -1,0 +1,9 @@
+[run]
+omit = /usr/*
+       *etc/*
+       *site-packages*
+       *__init__*
+       *tests*
+       setup.py
+       *__version__.py
+
