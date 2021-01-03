@@ -2,7 +2,7 @@
 
 import pytest
 
-from greem_stemmer.stemmer import stem_word
+from greek_stemmer.stemmer import stem_word
 
 
 class TestStemWord:

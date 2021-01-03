@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from greem_stemmer.closets.rules import rules
+from greek_stemmer.closets.rules import rules
 
 
 def test_rules():

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from greem_stemmer.closets import POS
+from greek_stemmer.closets import POS
 
 
 def test_pos_tags():

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from greem_stemmer.tools.general_tools import *
+from greek_stemmer.tools.general_tools import *
 
 
 class TestValidStrParam:

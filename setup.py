@@ -12,7 +12,7 @@ from shutil import rmtree
 # setup.py structure was based on: https://github.com/kennethreitz/setup.py/blob/master/setup.py
 
 # Package meta-data
-NAME = 'greek-stemmer'
+NAME = 'greek-stemmer-POS'
 DESCRIPTION = 'A greek stemmer that utilizes Part of Speech (PoS) tags'
 URL = 'https://github.com/kpech21/Greek-Stemmer'
 EMAIL = 'kpechlivanis21@gmail.com'
@@ -106,10 +106,10 @@ setup(
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Natural Language :: English',
-        'License :: OSI Approved :: GNU License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ]

@@ -2,7 +2,7 @@
 
 import pytest
 
-from greem_stemmer.lemmatizers.verb import stem
+from greek_stemmer.lemmatizers.verb import stem
 
 
 class TestVerbStem:

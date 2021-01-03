@@ -50,7 +50,7 @@ Usage
 -----
 
 ```python
-from greem_stemmer import stemmer
+from greek_stemmer import stemmer
 
 stemmer.stem_word('εργαζόμενος', 'VBG')
 // ΕΡΓΑΖ

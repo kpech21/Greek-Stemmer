@@ -2,7 +2,7 @@
 
 import pytest
 
-from greem_stemmer.tools.text_tools import *
+from greek_stemmer.tools.text_tools import *
 
 
 class TestParseText:
