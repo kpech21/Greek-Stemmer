@@ -17,7 +17,7 @@ DESCRIPTION = 'A greek stemmer that utilizes Part of Speech (PoS) tags'
 URL = 'https://github.com/kpech21/Greek-Stemmer'
 EMAIL = 'kpechlivanis21@gmail.com'
 AUTHOR = 'Konstantinos Pechlivanis'
-REQUIRES_PYTHON = '>=3.8'
+REQUIRES_PYTHON = '>=3.6'
 VERSION = '1.0.0'
 
 # What packages are required for this module to be executed?
