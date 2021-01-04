@@ -12,7 +12,7 @@ from shutil import rmtree
 # setup.py structure was based on: https://github.com/kennethreitz/setup.py/blob/master/setup.py
 
 # Package meta-data
-NAME = 'greek-stemmer-POS'
+NAME = 'greek-stemmer-pos'
 DESCRIPTION = 'A greek stemmer that utilizes Part of Speech (PoS) tags'
 URL = 'https://github.com/kpech21/Greek-Stemmer'
 EMAIL = 'kpechlivanis21@gmail.com'

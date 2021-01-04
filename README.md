@@ -43,7 +43,7 @@ Install
 
 Simply:
 ```shell script
-$ pip install pairing-functions
+$ pip install greek-stemmer-pos
 ```
 
 Usage
@@ -69,3 +69,7 @@ Code coverage
 ----
 - Code coverage metrics are also available via [pytest-cov](https://github.com/pytest-dev/pytest-cov).
 - Existing code coverage --> 100%
+
+Python Package Index (PyPI)
+----
+- Library is available [here](https://pypi.org/project/greek-stemmer-pos/)
