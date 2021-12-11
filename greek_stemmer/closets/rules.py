@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# extracted rules for stemming
+# all the extracted linguistic rules for the greek stemmer
 
 rules = {
     'verbs': {

@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-
-# the file that contains the set of word sets.
+# file with a significant number of word exceptions about lemmatization
+# the following list could be enriched even more
 
 exceptions = {
     'unlemmatized':

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # all the available Part of Speech Tags
 
 total_pos_tags = [
