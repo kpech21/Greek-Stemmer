@@ -18,14 +18,13 @@ URL = 'https://github.com/kpech21/Greek-Stemmer'
 EMAIL = 'kpechlivanis21@gmail.com'
 AUTHOR = 'Konstantinos Pechlivanis'
 REQUIRES_PYTHON = '>=3.6'
-VERSION = '1.0.0'
+VERSION = '1.1.2'
 
 # What packages are required for this module to be executed?
 REQUIRED = ['pytest', 'pytest-cov']
 
 # What packages are optional?
 EXTRAS = {}
-
 
 with open('README.md') as f:
     readme = f.read()
@@ -106,11 +105,15 @@ setup(
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Natural Language :: English',
+        'Natural Language :: Greek',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Education',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy'
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9'
     ]
 )
