@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+from typing import List, Tuple
 
 import pytest
 
@@ -7,7 +7,7 @@ from greek_stemmer.stemmer import stem_word
 
 class TestStemWord:
 
-    def test_stem_word_raises_type_error(self):
+    def test_stem_word_raises_type_error(self) -> None:
 
         with pytest.raises(TypeError):
             stem_word(word=None, pos='NNM')
@@ -21,7 +21,7 @@ class TestStemWord:
         with pytest.raises(TypeError):
             stem_word(word='Ολόκληρη πρόταση', pos='JJM')
 
-    stem_word_testdata = [
+    stem_word_testdata: List[Tuple] = [
         ('English', 'NNPSN', 'English'),
         (' ΕλληνικάR ', 'NNPSN', 'ΕλληνικάR'),
         ('', 'PRP', ''),
@@ -40,6 +40,6 @@ class TestStemWord:
     ]
 
     @pytest.mark.parametrize('word, pos, output', stem_word_testdata)
-    def test_stem_word_with_testdata(self, word, pos, output):
+    def test_stem_word_with_testdata(self, word: str, pos: str, output: str) -> None:
 
         assert stem_word(word, pos) == output

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+from typing import List, Tuple
 
 import pytest
 
@@ -7,12 +7,12 @@ from greek_stemmer.tools.text_tools import *
 
 class TestParseText:
 
-    def test_parse_word_receives_no_string(self):
+    def test_parse_word_receives_no_string(self) -> None:
 
         assert parse_word(None) == ''
 
     # check accents removal and uppercase letters
-    parse_word_testdata = [
+    parse_word_testdata: List[Tuple] = [
         (' $', '$'),
         (' foo ', 'FOO'),
         ('(25%)', '(25%)'),
@@ -27,20 +27,20 @@ class TestParseText:
     ]
 
     @pytest.mark.parametrize('word, output', parse_word_testdata)
-    def test_parse_word_with_various_inputs(self, word, output):
+    def test_parse_word_with_various_inputs(self, word: str, output: str) -> None:
 
         assert parse_word(word) == output
 
 
 class TestParsePos:
 
-    def test_parse_pos_receives_no_string(self):
+    def test_parse_pos_receives_no_string(self) -> None:
 
         with pytest.raises(TypeError):
             parse_pos(None)
 
     # check accents removal and uppercase letters
-    parse_pos_testdata = [
+    parse_pos_testdata: List[Tuple] = [
         (' $', '$'),
         (' foo ', 'FOO'),
         ('(25%)', '(25%)'),
@@ -55,19 +55,19 @@ class TestParsePos:
     ]
 
     @pytest.mark.parametrize('word, output', parse_pos_testdata)
-    def test_parse_pos_with_various_inputs(self, word, output):
+    def test_parse_pos_with_various_inputs(self, word: str, output: str) -> None:
 
         assert parse_pos(word) == output
 
 
 class TestIsGreek:
 
-    def test_is_greek_receives_no_string(self):
+    def test_is_greek_receives_no_string(self) -> None:
 
         assert is_greek(None) is False
 
     # check accents removal and uppercase letters
-    parse_is_greek_testdata = [
+    parse_is_greek_testdata: List[Tuple] = [
         (' $', False),
         ('0.5', False),
         ('foo', False),
@@ -86,6 +86,6 @@ class TestIsGreek:
     ]
 
     @pytest.mark.parametrize('word, output', parse_is_greek_testdata)
-    def test_is_greek_with_various_inputs(self, word, output):
+    def test_is_greek_with_various_inputs(self, word: str, output: str) -> None:
 
         assert is_greek(word) == output

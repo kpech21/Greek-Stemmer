@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-
 from greek_stemmer.closets.rules import rules
 
 
-def test_rules():
+def test_rules() -> None:
 
     assert isinstance(rules, dict)
