@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from .closets.POS import pos_tags, total_pos_tags
 from .lemmatizers import verb, non_verb
 from .tools.general_tools import valid_str_param, valid_word_param
@@ -7,13 +5,14 @@ from .tools.text_tools import parse_word, parse_pos, is_greek
 
 
 def stem_word(word: str, pos: str) -> str:
-    """
-    :param: word: string, required
-    - The word to stem
-    :param: word (str): string, required
-    - The POS of given word
-    :return: str
-    - The stemmed word
+    """The main method of greek stemmer that returns the lemma of a given word
+
+    Args:
+        word (str): The word to stem.
+        pos (str): The POS of the given word.
+
+    Returns:
+        str: Return the lemmatized word
     """
     if not valid_str_param(word):
         raise TypeError(f'Invalid parameter: {word}. Given text have to be a string')
@@ -28,8 +27,8 @@ def stem_word(word: str, pos: str) -> str:
         return word.strip()
 
     # parse the given word and POS
-    word = parse_word(word)
-    pos = parse_pos(pos)
+    word: str = parse_word(word)
+    pos: str = parse_pos(pos)
 
     if pos not in total_pos_tags:
         raise ValueError('Given Part of Speech Tag is not valid!')

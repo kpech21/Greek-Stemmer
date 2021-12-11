@@ -1,16 +1,17 @@
-# -*- coding: utf-8 -*-
-
 from ..closets.POS import pos_tags
 from ..closets.rules import rules
 from ..closets.word_exceptions import exceptions
 
 
 def stem(word: str, pos: str) -> str:
-    """
-    :param word: string, required
-    :param pos: string, required
-    :return: string
-    - Return the lemmatized word
+    """Stem method responsible to apply lemmatization in a given verb
+
+    Args:
+        word (str): The word to stem.
+        pos (str): The POS of the given word.
+
+    Returns:
+        str: Return the lemmatized word
     """
     # rule-set 1Α: unlemmatized words
     # rule-set 1B: unlemmatized words
