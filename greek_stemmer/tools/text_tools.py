@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import unicodedata
 from typing import Optional
 
@@ -8,9 +6,13 @@ ALPHABET = frozenset('ΑΆΒΓΔΕΈΖΗΉΘΙΊΪΚΛΜΝΞΟΌΠΡΣΤΥΎΫΦ
 
 
 def parse_word(word: Optional[str]) -> str:
-    """
-    :param: word: string, required
-    :return: string
+    """Method parses a given word.
+
+    Args:
+        word (str): A given string word.
+
+    Returns:
+        str: Return the parsed word.
     """
     if word is None:
         return ''
@@ -25,22 +27,28 @@ def parse_word(word: Optional[str]) -> str:
 
 
 def parse_pos(pos: Optional[str]) -> str:
-    """
-    Parses of POS
-    :param: pos: string, required
-    :return: string
+    """Method parses a given POS.
+
+    Args:
+        pos (str): A given Part of Speech.
+
+    Returns:
+        str: Return the parsed Part of Speech.
     """
     if isinstance(pos, str):
         return pos.strip().upper()
     else:
-        raise TypeError('POS tags are required to be strings')
+        raise TypeError('POS tags are required to be string')
 
 
 def is_greek(word: Optional[str]) -> bool:
-    """
-    Checks whether a word is greek or not.
-    :param: word: str, required
-    :return: bool
+    """Method checks whether a given word is greek.
+
+    Args:
+        word (Any): A given word.
+
+    Returns:
+        bool: Asserts whether word is greek.
     """
     if isinstance(word, str):
         return all(n in ALPHABET for n in word.strip())
