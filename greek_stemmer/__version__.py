@@ -1,7 +1,7 @@
 __title__ = 'greek-stemmer'
 __description__ = 'A greek stemmer that utilizes Part of Speech (PoS) tags'
 __url__ = 'https://github.com/kpech21/Greek-Stemmer'
-__version__ = '1.0.0'
+__version__ = '1.1.2'
 __author__ = 'Konstantinos Pechlivanis'
 __author_email__ = 'kpechlivanis21@gmail.com'
 __license__ = 'GNU License'

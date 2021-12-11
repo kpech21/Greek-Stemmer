@@ -1,6 +1,22 @@
 Release History
 ===============
 
+1.1.2 (2021-12-11)
+------------------
+
+- hotfix in closets package
+  - add \__init\__.py file in closets package
+- Changes in style, docs and typing
+  - add shields of the project in README.md
+  - add more typings in methods
+  - add more clear header in methods
+  - minor style changes in codebase
+- Changes in maintenance of the project
+  - update pip requirements (pytest and pytest-cov) to last version
+  - add CODE_OF_CONDUCT.md with details about the contribution in an open-source project
+  - update CONTRIBUTING.md with more detailed description
+  - create new version of PiPI
+
 1.0.0 (2021-01-03)
 ------------------
 

@@ -1,5 +1,11 @@
 # Greek Stemmer
 
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/greek-stemmer-pos?logo=python&logoColor=white)](https://www.python.org/)
+[![PyPI](https://img.shields.io/pypi/v/greek-stemmer-pos?color=blue&label=PyPI&logo=PyPI&logoColor=white)](https://pypi.org/project/greek-stemmer-pos/)
+
+![Coverage](https://img.shields.io/badge/Coverage-100%25-orange)
+[![PyPI - Wheel](https://img.shields.io/pypi/wheel/greek-stemmer-pos?color=orange)](https://www.python.org/dev/peps/pep-0427/)
+
 Python stemming library that given a word and the Part Of Speech tagging (POS) of the word removes its inflectional suffix according to a set of rules based algorithm. The algorithm is developed according to the grammatical rules of the Modern Greek language [1]. An extended documentation of the removal process, as well as a short evaluation of the system is showing the algorithm accuracy that works with better performance than other past stemming algorithms for the Greek language giving 99.4 percent correct results in a dataset of 5000 of words.
 
 [1] David Holton, Peter Mackridge, Ειρήνη Φιλιππάκη-Warburton (2002), "Γραμματική της Ελληνικής Γλώσσας".
@@ -41,7 +47,9 @@ Examples
 Install
 -------
 
-Simply:
+The recommended installation is via `pip`:
+
+Simply type:
 ```shell script
 $ pip install greek-stemmer-pos
 ```
